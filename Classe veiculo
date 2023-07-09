@@ -1,0 +1,30 @@
+public class Veiculo {
+    protected double preco;
+    protected String modelo;
+
+    public Veiculo(String modelo, double preco) {
+        this.modelo = modelo;
+        this.preco = preco;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void printDados() {
+        System.out.println("Modelo: " + modelo);
+        System.out.println("Preço: " + preco);
+    }
+
+    void setPreco(double precoAtualizado) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    void setPreco(double precoAtualizado) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    void setPreco(double precoAtualizado) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+}
