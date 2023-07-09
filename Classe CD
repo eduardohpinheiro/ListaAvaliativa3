@@ -1,0 +1,53 @@
+// EXERCICIO 1
+import java.util.Scanner;
+
+public class CD extends Midia {
+    private int nMusicas;
+
+    public CD() {
+    }
+
+    public CD(int codigo, double preco, String nome, int nMusicas) {
+        super(codigo, preco, nome);
+        this.nMusicas = nMusicas;
+    }
+
+    public int getNMusicas() {
+        return nMusicas;
+    }
+
+    public void setNMusicas(int nMusicas) {
+        this.nMusicas = nMusicas;
+    }
+
+    @Override
+    public String getTipo() {
+        return "CD";
+    }
+
+    @Override
+    public String getDetalhes() {
+        return super.getDetalhes() + ", Número de Músicas: " + nMusicas;
+    }
+
+    @Override
+public void inserirDados() {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Inserindo dados do CD:");
+    System.out.print("Código: ");
+    int codigo = scanner.nextInt();
+    System.out.print("Preço: ");
+    double preco = scanner.nextDouble();
+    scanner.nextLine(); // Limpar o buffer do scanner
+    System.out.print("Nome: ");
+    String nome = scanner.nextLine();
+    System.out.print("Número de Músicas: ");
+    int nMusicas = scanner.nextInt();
+    
+    setCodigo(codigo);
+    setPreco(preco);
+    setNome(nome);
+    setNMusicas(nMusicas);
+}
+
+}
