@@ -1,0 +1,25 @@
+public class Moto extends Veiculo {
+    private int ano;
+
+    public Moto(double preco, String modelo, int ano) {
+        super(modelo, preco);
+        this.ano = ano;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    @Override
+    public double getPreco() {
+        if (ano >= 2008) {
+            return super.getPreco() * 1.10;
+        } else {
+            return super.getPreco();
+        }
+    }
+}
