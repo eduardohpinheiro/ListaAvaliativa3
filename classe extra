@@ -1,0 +1,90 @@
+// Resolução dos itens A e B
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class CadastroVeiculos {
+    public static void main(String[] args) {
+        List<Veiculo> veiculos = new ArrayList<>();
+
+        Scanner scanner = new Scanner(System.in);
+        int opcao;
+
+        do {
+            System.out.println("Bem-vindo ao Cadastro de Veículos!");
+            System.out.println("Selecione uma opção:");
+            System.out.println("1 - Inserir Moto");
+            System.out.println("2 - Inserir Carro");
+            System.out.println("0 - Sair");
+            opcao = scanner.nextInt();
+            scanner.nextLine(); // Limpar o buffer do scanner
+
+            if (opcao == 1) {
+                Moto moto = criarMoto(scanner);
+                veiculos.add(moto);
+            } else if (opcao == 2) {
+                Carro carro = criarCarro(scanner);
+                veiculos.add(carro);
+            }
+        } while (opcao != 0);
+
+        System.out.println("\nRelatório de Veículos Cadastrados:");
+        for (Veiculo veiculo : veiculos) {
+            veiculo.printDados();
+        }
+
+        double totalPrecos = calcularTotalPrecos(veiculos);
+        System.out.println("\nTotal de Preços dos Veículos: " + totalPrecos);
+
+        ajustarPrecos(veiculos);
+        double totalPrecosAtualizados = calcularTotalPrecos(veiculos);
+        System.out.println("Total de Preços Atualizados dos Veículos: " + totalPrecosAtualizados);
+    }
+
+    private static Moto criarMoto(Scanner scanner) {
+        System.out.println("\nInserindo dados da Moto:");
+        System.out.print("Preço: ");
+        double preco = scanner.nextDouble();
+        scanner.nextLine(); // Limpar o buffer do scanner
+        System.out.print("Modelo: ");
+        String modelo = scanner.nextLine();
+        System.out.print("Ano: ");
+        int ano = scanner.nextInt();
+
+        return new Moto(preco, modelo, ano);
+    }
+
+    private static Carro criarCarro(Scanner scanner) {
+        System.out.println("\nInserindo dados do Carro:");
+        System.out.print("Preço: ");
+        double preco = scanner.nextDouble();
+        scanner.nextLine(); // Limpar o buffer do scanner
+        System.out.print("Modelo: ");
+        String modelo = scanner.nextLine();
+        System.out.print("Quilometragem: ");
+        double km = scanner.nextDouble();
+
+        return new Carro(modelo, preco, km);
+    }
+
+    private static double calcularTotalPrecos(List<Veiculo> veiculos) {
+        double totalPrecos = 0;
+        for (Veiculo veiculo : veiculos) {
+            totalPrecos += veiculo.getPreco();
+        }
+        return totalPrecos;
+    }
+
+    private static void ajustarPrecos(List<Veiculo> veiculos) {
+        for (Veiculo veiculo : veiculos) {
+            if (veiculo instanceof Moto && ((Moto) veiculo).getAno() >= 2008) {
+                double precoAtualizado = veiculo.getPreco() * 1.10;
+                veiculo.setPreco(precoAtualizado);
+            } else if (veiculo instanceof Carro && ((Carro) veiculo).getKm() > 100000) {
+                double precoAtualizado = veiculo.getPreco() * 0.92;
+                veiculo.setPreco(precoAtualizado);
+            }
+        }
+    }
+}
