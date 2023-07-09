@@ -1,0 +1,54 @@
+//EXERCICIO 1
+import java.util.Scanner;
+
+public class DVD extends Midia {
+    private int nFaixas;
+
+    public DVD() {
+    }
+
+    public DVD(int codigo, double preco, String nome, int nFaixas) {
+        super(codigo, preco, nome);
+        this.nFaixas = nFaixas;
+    }
+
+    public int getNFaixas() {
+        return nFaixas;
+    }
+
+    public void setNFaixas(int nFaixas) {
+        this.nFaixas = nFaixas;
+    }
+
+    @Override
+    public String getTipo() {
+        return "DVD";
+    }
+
+    @Override
+    public String getDetalhes() {
+        return super.getDetalhes() + ", Número de Faixas: " + nFaixas;
+    }
+
+    @Override
+    public void inserirDados() {
+        
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Inserindo dados do DVD:");
+    System.out.print("Código: ");
+    int codigo = scanner.nextInt();
+    System.out.print("Preço: ");
+    double preco = scanner.nextDouble();
+    scanner.nextLine(); // Limpar o buffer do scanner
+    System.out.print("Nome: ");
+    String nome = scanner.nextLine();
+    System.out.print("Número de Faixas: ");
+    int nFaixas = scanner.nextInt();
+
+    setCodigo(codigo);
+    setPreco(preco);
+    setNome(nome);
+    setNFaixas(nFaixas);
+}
+
+    }
